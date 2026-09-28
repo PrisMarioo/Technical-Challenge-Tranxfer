@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowNote</title>
+</head>
+<body>
+    <h1>FlowNotes</h1>
+    <p>All of your notes in one place, in the best place.</p>
+
+    <form id="note-form">
+  <label for="content">Write a note</label>
+  <textarea id="content" name="content" required></textarea>
+
+  <label for="due-date">Due date (optional)</label>
+  <input id="due-date" name="dueDate" type="datetime-local">
+
+  <button type="submit">Publish note</button>
+</form>
+<p id="form-status" role="status"></p>
+
+    <h2>Recent Notes</h2>
+        <p id="status">Loading notes...</p>
+        <ul id="notes"> </ul>
+       
+        <script src="app.js"></script>
+
+</body>
+</html>
