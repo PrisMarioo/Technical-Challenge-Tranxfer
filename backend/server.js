@@ -10,15 +10,17 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, "../frontend")));
 
+
+
+
+
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL
 });
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.json({ message: "FlowNotes API is running" });
-});
+
 
 
 
@@ -68,6 +70,8 @@ app.get("/api/db-check", async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
