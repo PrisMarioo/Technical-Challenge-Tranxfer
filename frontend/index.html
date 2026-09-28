@@ -4,27 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlowNote</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>FlowNotes</h1>
-    <p>All of your notes in one place, in the best place.</p>
+   <div class="app-layout">
+  <aside class="sidebar">
+    <div class="brand">FlowNote</div>
 
-    <form id="note-form">
-  <label for="content">Write a note</label>
-  <textarea id="content" name="content" required></textarea>
+    <nav aria-label="Main navigation">
+      <a class="nav-link active" href="/">Home</a>
+      <a class="nav-link" href="#recent-notes">Recent notes</a>
+    </nav>
 
-  <label for="due-date">Due date (optional)</label>
-  <input id="due-date" name="dueDate" type="datetime-local">
+    <p class="sidebar-caption">A calmer place for your thoughts.</p>
+  </aside>
 
-  <button type="submit">Publish note</button>
-</form>
-<p id="form-status" role="status"></p>
+  <main class="main-content">
+    <header class="page-header">
+      <p class="eyebrow">YOUR SPACE TO THINK</p>
+      <h1>Glad to have you here.</h1>
+      <p>Capture what matters and keep it close.</p>
+    </header>
 
-    <h2>Recent Notes</h2>
-        <p id="status">Loading notes...</p>
-        <ul id="notes"> </ul>
-       
-        <script src="app.js"></script>
+    <section class="panel" aria-labelledby="compose-title">
+      <h2 id="compose-title">What's on your mind?</h2>
 
+      <form id="note-form">
+        <label for="content">Your note</label>
+        <textarea id="content" name="content"
+                  placeholder="Write something worth remembering..."
+                  required></textarea>
+
+        <label for="due-date">Due date (optional)</label>
+        <input id="due-date" name="dueDate" type="datetime-local">
+
+        <button type="submit">Publish note</button>
+      </form>
+
+      <p id="form-status" role="status"></p>
+    </section>
+
+    <section id="recent-notes" aria-labelledby="notes-title">
+      <h2 id="notes-title">Recent notes</h2>
+      <p id="status" role="status">Loading notes...</p>
+      <ul id="notes" class="notes-list"></ul>
+    </section>
+  </main>
+</div>
+
+<script src="app.js"></script>
 </body>
 </html>
