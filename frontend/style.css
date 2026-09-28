@@ -293,3 +293,22 @@ button:hover {
   color: #5c5c63;
 }
 
+
+
+
+
+
+
+.auth-page {
+  width: min(100% - 36px, 420px);
+  margin: 8vh auto;
+}
+
+.auth-page > p {
+  color: #73737b;
+  margin-bottom: 28px;
+}
+
+.auth-page .panel {
+  margin-bottom: 18px;
+}

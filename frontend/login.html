@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join · FlowNote</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="auth-page">
+    <h1>FlowNote</h1>
+    <p>Choose a name to join the board.</p>
+
+    <section class="panel">
+      <form id="guest-form">
+        <label for="username">Your name</label>
+        <input
+          id="username"
+          name="username"
+          required
+          minlength="2"
+          maxlength="30"
+          autocomplete="nickname"
+          placeholder="How should we call you?"
+        >
+        <button type="submit">Continue as guest</button>
+      </form>
+      <p id="guest-status" role="status"></p>
+    </section>
+  </main>
+
+  <script src="auth.js"></script>
+</body>
+</html>

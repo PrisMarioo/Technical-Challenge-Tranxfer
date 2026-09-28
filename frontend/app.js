@@ -1,3 +1,8 @@
+const guestName = localStorage.getItem("flownoteGuestName");
+
+if (!guestName) {
+  window.location.replace("/login.html");
+}
 function updateActiveNavigation() {
   const isUpcoming =
     new URLSearchParams(window.location.search).get("view") === "upcoming";
@@ -62,12 +67,12 @@ async function loadNotes() {
 
       const avatar = document.createElement("span");
       avatar.className = "note-avatar";
-      avatar.textContent = "F";
+      avatar.textContent = (note.author || "Guest").charAt(0).toUpperCase();
 
       const author = document.createElement("div");
 
       const name = document.createElement("strong");
-      name.textContent = "FlowNote";
+      name.textContent = note.author || "Guest";
 
       const time = document.createElement("small");
       time.textContent = new Date(note.createdAt).toLocaleString("en-GB");
@@ -149,7 +154,11 @@ form.addEventListener("submit", async (event) => {
     const response = await fetch("/api/notes", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ content, dueDate })
+      body: JSON.stringify({
+  author: guestName,
+  content,
+  dueDate
+})
     });
 
     if (!response.ok) {
@@ -164,6 +173,11 @@ form.addEventListener("submit", async (event) => {
       "Could not publish the note. Please try again.";
     console.error(error);
   }
+});
+
+document.querySelector("#logout-button")?.addEventListener("click", () => {
+  localStorage.removeItem("flownoteGuestName");
+  window.location.assign("/login.html");
 });
 
 window.addEventListener("hashchange", updateActiveNavigation);
