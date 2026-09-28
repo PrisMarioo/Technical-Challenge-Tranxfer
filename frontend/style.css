@@ -70,6 +70,7 @@ body {
   padding: 64px 32px;
 }
 
+
 .page-header {
   margin-bottom: 36px;
 }
@@ -220,6 +221,22 @@ button:hover {
   font-weight: 600;
 }
 
+.due-later {
+  background: #fff6d6;
+  color: #765700;
+}
+
+.due-near {
+  background: #ffebd6;
+  color: #934900;
+}
+
+.due-soon,
+.due-overdue {
+  background: #ffe4e3;
+  color: #a52a25;
+}
+
 #status,
 #form-status {
   color: #73737b;
@@ -253,4 +270,26 @@ button:hover {
   .main-content {
     padding: 32px 18px;
   }
+  }
+
+.notes-list .note-overdue {
+  background: #eeeeef;
+  border-color: #dedee1;
+  box-shadow: none;
 }
+
+.note-overdue .note-avatar {
+  background: #d7d7da;
+  color: #56565b;
+}
+
+.note-overdue .note-content,
+.note-overdue .note-header strong {
+  color: #626269;
+}
+
+.note-overdue .due-overdue {
+  background: #dedee1;
+  color: #5c5c63;
+}
+

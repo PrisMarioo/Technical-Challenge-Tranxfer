@@ -40,9 +40,15 @@ app.post("/api/notes", async (req, res) => {
   const content = req.body.content?.trim();
   const dueDate = req.body.dueDate || null;
 
-  if (!content) {
-    return res.status(400).json({ error: "Note content is required" });
+ if (dueDate !== null) {
+  const timestamp = Date.parse(dueDate);
+
+  if (!Number.isFinite(timestamp) || timestamp <= Date.now()) {
+    return res.status(400).json({
+      error: "Due date must be in the future"
+    });
   }
+}
 
   try {
     const result = await pool.query(
