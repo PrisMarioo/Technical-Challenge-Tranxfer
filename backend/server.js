@@ -65,7 +65,12 @@ app.get("/api/db-check", async (req, res) => {
     const result = await pool.query("SELECT COUNT(*) FROM notes");
     res.json({ noteCount: Number(result.rows[0].count) });
   } catch (error) {
-    console.error("Database connection failed:", error.message);
+    console.error("Database connection failed:", {
+  name: error.name,
+  code: error.code,
+  message: error.message,
+  hasDatabaseUrl: Boolean(process.env.DATABASE_URL)
+});
     res.status(500).json({ error: "Database connection failed" });
   }
 });
