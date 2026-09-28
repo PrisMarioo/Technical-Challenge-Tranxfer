@@ -12,11 +12,19 @@ async function loadNotes() {
     const notes = await response.json();
     list.replaceChildren();
 
-    for (const note of notes) {
-      const item = document.createElement("li");
-      item.textContent = note.content;
-      list.appendChild(item);
-    }
+    const item = document.createElement("li");
+
+const content = document.createElement("p");
+content.textContent = note.content;
+item.appendChild(content);
+
+if (note.dueDate) {
+  const due = document.createElement("small");
+  due.textContent = `Due: ${new Date(note.dueDate).toLocaleString("en-GB")}`;
+  item.appendChild(due);
+}
+
+list.appendChild(item);
 
     status.textContent = notes.length === 0 ? "No notes yet." : "";
   } catch (error) {
@@ -32,7 +40,8 @@ form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const content = document.querySelector("#content").value.trim();
-  const dueDate = document.querySelector("#due-date").value || null;
+  const localDueDate = document.querySelector("#due-date").value;
+const dueDate = localDueDate ? new Date(localDueDate).toISOString() : null;
 
   if (!content) return;
 
